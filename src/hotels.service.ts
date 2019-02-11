@@ -6,14 +6,26 @@ import * as puppeteer from 'puppeteer'
 @Injectable()
 export class HotelsService {
 
-  async search() {
-    const checkInDate = '05022019'
-    const checkOutDate = '27022019'
+  async search({ checkin, checkout }) {
+    const checkInDate = checkin
+    const checkOutDate = checkout
     
     let requestUrl = this.searchReservationsLecanton({ checkInDate, checkOutDate })
     
-    const browser = await puppeteer.launch({ headless: false })
+    const browser = await puppeteer.launch({ headless: true })
     const page = await browser.newPage()
+
+    await page.setRequestInterception(true)
+    
+    // disable images and css while scraping
+    page.on('request', (req) => {
+      if(req.resourceType() == 'stylesheet' || req.resourceType() == 'font' 
+        || req.resourceType() == 'image') {
+        req.abort()
+      } else {
+        req.continue()
+      }
+    })
 
     await page.goto(requestUrl, { waitLoad: true, waitNetworkIdle: true })
     await page.waitForSelector('div.entries > div.entry.available')
@@ -35,6 +47,7 @@ export class HotelsService {
     for (let i = 0; i < hotelsLinks.length; i ++) {
       await page.goto(hotelsLinks[i], { waitLoad: true, waitNetworkIdle: true })
       await page.waitForSelector('div.roomExcerpt')
+      await page.waitFor(1000)
 
       let hotelData = await page.evaluate(() => {
         const containerEl = document.querySelector('div.roomExcerpt')
