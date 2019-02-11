@@ -1,5 +1,6 @@
 
 import { Controller, Post, Body, Get } from '@nestjs/common'
+
 import { HotelsService } from './hotels.service'
 import { SearchHotelsDto } from './search-hotels.dto'
 

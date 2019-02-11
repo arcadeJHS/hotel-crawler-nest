@@ -3,14 +3,16 @@ import { Injectable } from '@nestjs/common'
 
 import * as puppeteer from 'puppeteer'
 
+import { SearchHotelsDto } from './search-hotels.dto'
+
 @Injectable()
 export class HotelsService {
 
-  async search({ checkin, checkout }) {
-    const checkInDate = checkin
-    const checkOutDate = checkout
+  async search(searchHotelsDto: SearchHotelsDto) {
+    const checkInDate = searchHotelsDto.checkIn.replace('/', '')
+    const checkOutDate = searchHotelsDto.checkOut.replace('/', '')
     
-    let requestUrl = this.searchReservationsLecanton({ checkInDate, checkOutDate })
+    let requestUrl = this.searchReservationsLecanton(checkInDate, checkOutDate)
     
     const browser = await puppeteer.launch({ headless: true })
     const page = await browser.newPage()
@@ -74,7 +76,7 @@ export class HotelsService {
     return {hotelsData};
   }
 
-  searchReservationsLecanton({checkInDate, checkOutDate}) {
+  searchReservationsLecanton(checkInDate: string, checkOutDate: string) {
     return [
       'https://myreservations.omnibees.com/chain.aspx?c=2983&lang=pt-BR&ad=2',
       '&_ga=2.171262688.1724825935.1549395965-1084404608.1549395965',

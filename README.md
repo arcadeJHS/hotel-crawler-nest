@@ -11,7 +11,20 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Projeto que realiza o scraping da pagina `http://lecanton.com.br/` e coleta os dados dos hoteis disponiveis.
+
+Este projeto utilizou o framework [Nest](https://github.com/nestjs/nest) (TypeScript starter repository).
+
+Para utilizar a funcionalidade principal desse projeto, basta realizar uma requisição POST para o endpoint `http://localhost:3000/hotels/buscar/`.
+
+Como exemplo de uso, deve-se enviar os seguintes parametros para o referido endpoint:
+
+```
+{
+	"checkIn": "11/02/2019",
+	"checkOut": "27/02/2019"
+}
+```
 
 
 ## Installation

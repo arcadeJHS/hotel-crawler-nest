@@ -1,5 +1,5 @@
 
 export class SearchHotelsDto {
-    readonly checkin: string;
-    readonly checkout: string;
+    readonly checkIn: string;
+    readonly checkOut: string;
 }
