@@ -31,7 +31,7 @@ This project used the framework [Nest](https://github.com/nestjs/nest) (TypeScri
 
 This project has a crawler that performs scraping in the page `http://lecanton.com.br/` and collects the data of the available hotels.
 
-This project could be used as an application backend and accessed by REST endpoints.
+This project could be used as an application backend and accessed by public REST endpoints.
 
 
 ## Basic Usage
@@ -101,12 +101,12 @@ hotel-crawler-nest/
 
 ## Features
 
-- API REST endpoint.
+- `/hotels/buscar` the main API REST endpoint for scraping.
 
 
 ## Missing Features to implement
 
-- TODO.
+- This project is scraping one page (lecanton), but it could read multiple pages maybe using parallelism.
 
 
 ## License
