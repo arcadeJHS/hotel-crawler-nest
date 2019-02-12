@@ -1,3 +1,10 @@
+
+# Hotels Crawler
+
+This project contains features that performs the scraping of the page `http://lecanton.com.br/` and collects the data of the available hotels.
+
+This project used the framework [Nest](https://github.com/nestjs/nest) (TypeScript starter repository).
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank">
     <img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" />
@@ -9,32 +16,33 @@
 </p>
 
 
-## Description
+## Table of Contents
 
-Projeto que realiza o scraping da pagina `http://lecanton.com.br/` e coleta os dados dos hoteis disponiveis.
-
-Este projeto utilizou o framework [Nest](https://github.com/nestjs/nest) (TypeScript starter repository).
-
-Para utilizar a funcionalidade principal desse projeto, basta realizar uma requisição POST para o endpoint `http://localhost:3000/hotels/buscar/`.
-
-Como exemplo de uso, deve-se enviar os seguintes parametros para o referido endpoint:
-
-```
-{
-	"checkIn": "11/02/2019",
-	"checkOut": "27/02/2019"
-}
-```
+- [Introduction](#introduction)
+- [Basic Usage](#basic-usage)
+- [What was learned or used in this project](#what-was-learned-or-used-in-this-project)
+- [Folder Structure](#folder-structure)
+- [Features](#features)
+- [Missing Features to implement](#missing-features-to-implement)
+- [License](#license)
 
 
-## Installation
+## Introduction
+
+This project has a crawler that performs scraping in the page `http://lecanton.com.br/` and collects the data of the available hotels.
+
+This project could be used as an application backend and accessed by REST endpoints.
+
+
+## Basic Usage
+
+First you must perform the installation of the project dependencies by executing the command:
 
 ```bash
 $ npm install
 ```
 
-
-## Running the app
+You can run the app by executing one of following commands:
 
 ```bash
 # development
@@ -47,8 +55,16 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
+To access the main functionality of this project, you must execute a POST request to the endpoint `http://localhost:3000/hotels/buscar/`. As an example of use, you should send the following parameters to the previously mentioned endpoint:
 
-## Test
+```
+{
+  "checkIn": "11/02/2019",
+  "checkOut": "27/02/2019"
+}
+```
+
+The following commands performs the project tests:
 
 ```bash
 # unit tests
@@ -62,6 +78,37 @@ $ npm run test:cov
 ```
 
 
+## What was learned or used in this project
+
+- **Typescript** features.
+- **Puppeteer** features.
+- REST implementation with **Nest JS**.
+
+
+## Folder Structure
+
+The folder structure of the project looks like this:
+
+```
+hotel-crawler-nest/
+  src/
+    hotels.controller.ts   -> class with the REST endpoint
+	  hotels.service.ts      -> class with the scraping feature
+	  main.ts                -> the start up script
+  test/
+```
+
+
+## Features
+
+- API REST endpoint.
+
+
+## Missing Features to implement
+
+- TODO.
+
+
 ## License
 
-Nest is [MIT licensed](LICENSE).
+TODO.
